@@ -1,0 +1,91 @@
+package primerIntento;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ConsultoriaGlobal1 {
+
+	private WebDriver driver;
+	
+	By contactoBtn = By.xpath("//a[@href='https://www.consultoriaglobal.com.ar/cgweb/?page_id=370']");
+	By contactoPage = By.xpath("//*[@id=\"content\"]/header/div/div/h1");
+	
+	By nombre = By.name("your-name");
+	By email = By.name("your-email");
+	By asunto = By.name("your-subject");
+	By contactoBtnSend = By.xpath("//*[@id=\"wpcf7-f1297-p370-o1\"]/form/p[7]/input");
+	
+//	By errorMail = By.tagName("span");
+	
+//	By errorMail = By.cssSelector("//span[@class=\"wpcf7-not-valid-tip\"]");
+	
+	@Before
+	public void setUp() throws Exception{
+		System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		System.out.println("Se abre el navegador y se amplia la ventana");
+		driver.get("https://www.consultoriaglobal.com.ar/cgweb/");
+		System.out.println("Se accede a la pagina de Consultoria Global");
+	}
+	
+	@After
+	public void tearDown() throws Exception{
+		driver.quit();
+		System.out.println("Se cierra el navegador");
+	}
+	
+	@Test
+	public void test() throws InterruptedException {
+//		fail("Not yet implemented");
+		driver.findElement(contactoBtn).click();
+		System.out.println("Selecciona el boton de contacto");
+		
+		Thread.sleep(2000);
+		if(driver.findElement(contactoPage).isDisplayed()) {
+//			System.out.println("Se accedio a la pagina de contacto correctamente");
+			driver.findElement(nombre).sendKeys("Nombre");
+			System.out.println("Se completa el campo de nombre");
+			
+			driver.findElement(email).sendKeys("example");
+			System.out.println("Se completa el campo de email");
+			
+			driver.findElement(asunto).sendKeys("asunto");
+			System.out.println("Se completa el campo de asunto");
+			
+			driver.findElement(contactoBtnSend).click();
+			System.out.println("Se interactua con el boton enviar");
+			
+			
+			
+			assertEquals("La dirección e-mail parece inválida.",driver.findElements(By.xpath("//*[@id=\"wpcf7-f1297-p370-o1\"]/form/p[2]/span/span")).toString()g);
+			
+//			if(spans.get(1).isDisplayed()) {
+////				System.out.println("Se completa el campo de email");
+//				System.out.println("'La direccion e-mail parece invalida.'");
+//				//System.out.println(spans.get(1).getText().toString());
+//			}
+//			else {
+//				System.out.println("nice");
+//			}
+			
+		}
+		else {
+			System.out.println("No se encontro la pagina");
+		}
+		
+		
+	}
+	
+
+
+}

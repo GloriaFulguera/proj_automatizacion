@@ -1,0 +1,44 @@
+package primerAutomatizacion.pom;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class ContactPage extends Base{
+
+	By contactoBtn = By.xpath("//a[@href='https://www.consultoriaglobal.com.ar/cgweb/?page_id=370']");
+	By contactoPage = By.xpath("//*[@id=\"content\"]/header/div/div/h1");
+	
+	By nombre = By.name("your-name");
+	By email = By.name("your-email");
+	By asunto = By.name("your-subject");
+	By contactoBtnSend = By.xpath("//*[@id=\"wpcf7-f1297-p370-o1\"]/form/p[7]/input");
+	
+	By errorMail = By.tagName("span");
+	
+	public ContactPage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void accederPagina() throws InterruptedException {
+		click(contactoBtn);
+		
+		Thread.sleep(2500);
+	}
+	public void completarPagina() {
+		
+		if(isDisplayed(contactoPage)) {
+			type("ejemplo-nombre",nombre);
+			type("ejemplo-email",email);
+			type("ejemplo-asunto",asunto);
+			
+			click(contactoBtnSend);
+		}
+		else {
+			System.out.println("No se encontro la pagina");
+		}
+	}
+	public void mensajeInvalido() {
+		List<WebElement> spans = findElements()
+	}
+}

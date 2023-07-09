@@ -1,0 +1,46 @@
+package primerIntento;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ConsultoriaGlobal1 {
+
+	private WebDriver driver;
+	
+	By contactoBtn = By.xpath("//a[@href='https://www.consultoriaglobal.com.ar/cgweb/?page_id=370']");
+	By contactoPage = By.xpath("//*[@id=\"content\"]/header/div/div/h1");
+	
+	By emailUser = By.className("your-email");
+	
+	@Before
+	public void setUp() throws Exception{
+		System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.consultoriaglobal.com.ar/cgweb/");
+	}
+	
+	@After
+	public void tearDown() throws Exception{
+//		driver.quit();
+	}
+	
+	@Test
+	public void test() throws InterruptedException {
+//		fail("Not yet implemented");
+		driver.findElement(contactoBtn).click();
+		Thread.sleep(2000);
+		if(driver.findElement(contactoPage).isDisplayed()) {
+			System.out.println("Se accedio a la pagina de contacto correctamente");
+			driver.findElement(emailUser).sendKeys("a");
+		}
+		
+	}
+
+}

@@ -1,0 +1,33 @@
+package primerAutomatizacion.pom;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+
+public class ContactPage_Test {
+
+	private WebDriver driver;
+	ContactPage contactPage;
+	
+	
+	@Before
+	public void setUp() throws Exception {
+		contactPage = new ContactPage(driver);
+		driver = contactPage.chromeConnection();
+		contactPage.visit("https://www.consultoriaglobal.com.ar/cgweb/");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		driver.quit();
+	}
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

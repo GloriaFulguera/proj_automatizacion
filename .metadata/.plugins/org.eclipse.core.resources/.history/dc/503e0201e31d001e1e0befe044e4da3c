@@ -1,0 +1,25 @@
+package primerIntento;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+
+public class ConsultoriaGlobal1 {
+
+	private WebDriver drive;
+	
+	@Before
+	public void setUp() throws Exception{
+		System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
+		driver = new ChromeDriver();
+	}
+	
+	
+	@Test
+	public void test() {
+//		fail("Not yet implemented");
+	}
+
+}
