@@ -33,9 +33,9 @@ public class ContactPage_Test {
 		contactPage.completarPagina();
 		Thread.sleep(2000);
 		
-
-		assertTrue(contactPage.mensajeInvalido().isDisplayed());
-		//assertFalse(contactPage.mensajeInvalido().isDisplayed());
+		//assertTrue(!contactPage.mensajeInvalido().isDisplayed());
+//		assertTrue(contactPage.mensajeInvalido().isDisplayed());
+		assertFalse(contactPage.mensajeInvalido().isDisplayed());
 	}
 
 }
